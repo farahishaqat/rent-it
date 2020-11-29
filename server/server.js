@@ -19,7 +19,8 @@ app.get('*', (req, res) => {
     res.json({
         data: 'You reached nodejs api for react node app'
     })
-})
+});
+
 
 
 //port
