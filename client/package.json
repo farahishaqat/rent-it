@@ -12,6 +12,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "react-dev": "webpack -d --watch",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0"
   }
 }
