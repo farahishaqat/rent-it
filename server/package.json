@@ -1,5 +1,8 @@
 {
- "scripts":{
+  "name": "Rent-it app",
+  "version": "1.0.0",
+  "description": "An application used to rent items",
+  "scripts":{
     "server-dev": "nodemon server.js"
   },
   "dependencies": {
