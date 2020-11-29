@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const postRoutes = require('./routes/post')
 
 //app
 const app = express();
@@ -25,12 +26,8 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-//route : takes two argument path and a function
-app.get('*', (req, res) => {
-    res.json({
-        data: 'You reached nodejs api for react node app'
-    })
-});
+//route middleware 
+app.use('/api',postRoutes)
 
 
 
