@@ -1,8 +1,8 @@
 {
-  "name": "Rent-it app",
+  "name": "my-app",
   "version": "1.0.0",
   "description": "An application used to rent items",
-  "scripts":{
+  "scripts": {
     "server-dev": "nodemon server.js"
   },
   "dependencies": {
