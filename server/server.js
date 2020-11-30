@@ -35,4 +35,4 @@ app.use('/api',postRoutes)
 const port = process.env.PORT || 8000
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-//HELLO THERE
+//HELLO THERE from the other side
