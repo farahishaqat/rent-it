@@ -30,7 +30,7 @@ const Create = () => {
                 // empty state
                 setState({ ...state, itemName: '', itemDescription: '', itemPrice:'', user: '' });
                 // show sucess alert
-                alert(`Item Name ${response.data.itemName} is Added`);
+                alert(`Item ${response.data.itemName} is Added`);
             })
             .catch(error => {
                 console.log(error.response);

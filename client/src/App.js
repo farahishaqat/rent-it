@@ -51,7 +51,7 @@ const App = () => {
                         <div className="row">
                             <div className="col-md-10">
                                 <Link to={`/item/${item.slug}`}>
-                                    <h2><h4>Item Name:</h4> {item.itemName}</h2>
+                                    <h2>{item.itemName}</h2>
                                 </Link>
                                 <p className="lead">{item.itemDescription.substring(0, 100)}</p>
                                 <p>

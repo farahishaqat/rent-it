@@ -78,7 +78,7 @@ exports.remove = (req,res)=>{
     Item.findOneAndRemove({slug}).exec((err,item)=>{
         if(err) console.log(err);
         res.json({
-            message: 'Item Rented'
+            message: 'Item Rented.. Customer Care will contact you Shortly! :) '
         });
     });
 };

@@ -40,7 +40,7 @@ const UpdateItem = (props) => {
                 // empty state
                 setState({ ...state, itemName, itemDescription,itemPrice, slug, user });
                 // show sucess alert
-                alert(`Item Named ${itemName} is Edited`);
+                alert(`Item ${itemName} is Edited`);
             })
             .catch(error => {
                 console.log(error.response);
@@ -95,7 +95,7 @@ const UpdateItem = (props) => {
                 />
             </div>
             <div>
-                <button className="btn btn-primary">Edit</button>
+                <button className="btn btn-primary">Submit</button>
             </div>
         </form>
     );
