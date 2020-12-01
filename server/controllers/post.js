@@ -40,11 +40,42 @@ exports.list = (req,res)=>{
     })
 }
 
+
+/*The findOne() function is used to find one document according to the condition. If multiple documents match the condition,
+ then it returns the first document satisfying the condition.*/
+ 
 exports.read = (req,res)=>{
     const { slug } = req.params
     Post.findOne({slug})
     .exec((err,post)=>{
         if(err) console.log(err);
         res.json(post);
+    });
+};
+
+/*The findOneAndUpdate() function is used to find a matching document and update it according to the update arg, passing any options, 
+and returns the found document (if any) to the callback.*/ 
+
+exports.update=(req,res)=>{
+   const {slug} = req.params;
+   const{title,content,user} = req.body
+   // {new:true} returns the updatd input
+   Post.findOneAndUpdate({slug}, {title,content,user}, {new:true}).exec((err,post)=>{
+       if(err) console.log(err)
+       res.json(post);
+   });
+ 
+};
+
+
+/*The findOneAndRemove() function is used to find the element according to the
+condition and then remove the first matched element*/
+exports.remove = (req,res)=>{
+    const { slug } = req.params
+    Post.findOneAndRemove({slug}).exec((err,post)=>{
+        if(err) console.log(err);
+        res.json({
+            message: 'Post deleted'
+        });
     });
 };

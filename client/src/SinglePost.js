@@ -2,7 +2,7 @@ import React ,{ useEffect, useState } from 'react';
 import axios from 'axios'
 import Nav from './Nav'
 
-const SinglePost = (props)=>{
+const SinglePost = props=>{
     const [ post,setPost] = useState('')
 
     
@@ -13,8 +13,7 @@ const SinglePost = (props)=>{
         .then(response => setPost(response.data))
         .catch(error => alert('Error loading single post'));
         // eslint-disable-next-line 
-    })
-
+    },[]);
 
 
     return(
