@@ -5,7 +5,7 @@ const slugify = require('slugify');
 
 exports.create = (req, res) => {
     // console.log(req.body);
-    const {itemName,itemDescription,user} = req.body
+    const {itemName,itemDescription,itemPrice,user} = req.body
     const slug = slugify(itemName);
 
     //validate
@@ -16,14 +16,17 @@ exports.create = (req, res) => {
             break;
             case !itemDescription:
                 return res.status(400).json({error: 'Item Description is required'});
-                break;           
+                break; 
+                case !itemPrice:
+                   return res.status(400).json({error: 'Item Price is required'});
+                   break;          
     }
 
     //create item
-    Item.create({itemName,itemDescription,user,slug}, (err,item)=>{
+    Item.create({itemName,itemDescription,itemPrice,user,slug}, (err,item)=>{
         if(err){
             console.log(err);
-            res.status(400).json({error: 'Duplicate item, Try another Item Name !'});
+            res.status(400).json({error: 'Duplicate Item, Try another Item Name !'});
 
         }
         res.json(item);
@@ -58,9 +61,9 @@ and returns the found document (if any) to the callback.*/
 
 exports.update=(req,res)=>{
    const {slug} = req.params;
-   const{itemName,itemDescription,user} = req.body
+   const{itemName,itemDescription,itemPrice,user} = req.body
    // {new:true} returns the updatd input
-   Item.findOneAndUpdate({slug}, {itemName,itemDescription,user}, {new:true}).exec((err,item)=>{
+   Item.findOneAndUpdate({slug}, {itemName,itemDescription,itemPrice,user}, {new:true}).exec((err,item)=>{
        if(err) console.log(err)
        res.json(item);
    });

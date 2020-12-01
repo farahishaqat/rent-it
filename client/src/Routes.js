@@ -7,6 +7,7 @@ import App from './App'
 import Create from './Create';
 import SingleItem from './SingleItem'
 import UpdateItem from './UpdateItem'
+import ContactUs from './ContactUs'
 
 const Routes =()=> {
     return(
@@ -17,6 +18,7 @@ const Routes =()=> {
              <Route exact path='/create' component = {Create} />
              <Route exact path='/item/:slug' component = {SingleItem} />
              <Route exact path='/item/update/:slug' component = {UpdateItem} />
+             <Route exact path='/contact' component = {ContactUs} />
          </Switch>
         </BrowserRouter>
 

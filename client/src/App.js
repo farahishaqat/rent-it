@@ -55,14 +55,18 @@ const App = () => {
                                 </Link>
                                 <p className="lead">{item.itemDescription.substring(0, 100)}</p>
                                 <p>
-                                    Owner <span className="badge">{item.user}</span> Published on{' '}
+                                    Item Price (JOD):<span className="badge"> {item.itemPrice} </span>
+                                    Owner <span className="badge">{item.user}</span> 
+                                    <br></br>
+                                    Published on{' '}
                                     <span className="badge">{new Date(item.createdAt).toLocaleString()}</span>
+                                    
                                 </p>
                             </div>
 
                             <div className="col-md-2">
                                 <Link to={`/item/update/${item.slug}`} className="btn btn-sm btn-outline-warning">
-                                    Update
+                                    Edit
                                 </Link>
                                 <button
                                     onClick={() => deleteConfirm(item.slug)}

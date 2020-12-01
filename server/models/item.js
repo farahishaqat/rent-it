@@ -23,6 +23,11 @@ const itemSchema = new mongoose.Schema({
         min: 20,
         max: 2000000
     },
+
+    itemPrice:{
+        type: Number,
+        required: true,
+    },
     user:{
         type: String,
         default: 'User'

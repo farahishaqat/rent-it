@@ -7,10 +7,11 @@ const Create = () => {
     const [state, setState] = useState({
         itemName: '',
         itemDescription: '',
+        itemPrice:'',
         user: ''
     });
     // destructure values from state
-    const { itemName, itemDescription, user } = state;
+    const { itemName, itemDescription,itemPrice, user } = state;
 
     // onchange event handler
     function handleChange(name) {
@@ -21,13 +22,13 @@ const Create = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // console.table({ itemName, ItemDescription, user });
+        // console.table({ itemName, ItemDescription,itemPrice, user });
         axios
-            .post(`${process.env.REACT_APP_API}/item`, { itemName, itemDescription, user })
+            .post(`${process.env.REACT_APP_API}/item`, { itemName, itemDescription,itemPrice, user })
             .then(response => {
                 console.log(response);
                 // empty state
-                setState({ ...state, itemName: '', itemDescription: '', user: '' });
+                setState({ ...state, itemName: '', itemDescription: '', itemPrice:'', user: '' });
                 // show sucess alert
                 alert(`Item Name ${response.data.itemName} is Added`);
             })
@@ -51,7 +52,7 @@ const Create = () => {
                         value={itemName}
                         type="text"
                         className="form-control"
-                        placeholder="Item Name"
+                        placeholder="add item name"
                         required
                     />
                 </div>
@@ -67,13 +68,24 @@ const Create = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label className="text-muted">Item Price</label>
+                    <input
+                        onChange={handleChange('itemPrice')}
+                        value={itemPrice}
+                        type="text"
+                        className="form-control"
+                        placeholder="add item price"
+                        required
+                    />
+                </div>
+                <div className="form-group">
                     <label className="text-muted">User</label>
                     <input
                         onChange={handleChange('user')}
                         value={user}
                         type="text"
                         className="form-control"
-                        placeholder="Username"
+                        placeholder="add your username"
                         required
                     />
                 </div>

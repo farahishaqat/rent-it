@@ -6,17 +6,18 @@ const UpdateItem = (props) => {
     const [state, setState] = useState({
         itemName: '',
         itemDescription: '',
+        itemPrice:'',
         slug: '',
         user: ''
     });
-    const { itemName, itemDescription, slug, user } = state;
+    const { itemName, itemDescription,itemPrice, slug, user } = state;
 
     useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API}/item/${props.match.params.slug}`)
             .then(response => {
-                const { itemName, itemDescription, slug, user } = response.data;
-                setState({ ...state, itemName, itemDescription, slug, user });
+                const { itemName, itemDescription,itemPrice, slug, user } = response.data;
+                setState({ ...state, itemName, itemDescription,itemPrice, slug, user });
             })
             .catch(error => alert('Error loading item'));
              // eslint-disable-next-line
@@ -30,14 +31,14 @@ const UpdateItem = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // console.table({ itemName, itemDescription, user });
+        // console.table({ itemName, itemDescription,itemPrice, user });
         axios
-            .put(`${process.env.REACT_APP_API}/item/${slug}`, { itemName, itemDescription, user })
+            .put(`${process.env.REACT_APP_API}/item/${slug}`, { itemName, itemDescription,itemPrice, user })
             .then(response => {
                 console.log(response);
-                const { itemName, itemDescription, slug, user } = response.data;
+                const { itemName, itemDescription,itemPrice, slug, user } = response.data;
                 // empty state
-                setState({ ...state, itemName, itemDescription, slug, user });
+                setState({ ...state, itemName, itemDescription,itemPrice, slug, user });
                 // show sucess alert
                 alert(`Item Named ${itemName} is Edited`);
             })
@@ -56,7 +57,7 @@ const UpdateItem = (props) => {
                     value={itemName}
                     type="text"
                     className="form-control"
-                    placeholder="Item Name"
+                    placeholder="add item name"
                     required
                 />
             </div>
@@ -72,13 +73,24 @@ const UpdateItem = (props) => {
                 />
             </div>
             <div className="form-group">
+                <label className="text-muted">Item Price</label>
+                <textarea
+                    onChange={handleChange('itemPrice')}
+                    value={itemPrice}
+                    type="text"
+                    className="form-control"
+                    placeholder="add item price"
+                    required
+                />
+            </div>
+            <div className="form-group">
                 <label className="text-muted">User</label>
                 <input
                     onChange={handleChange('user')}
                     value={user}
                     type="text"
                     className="form-control"
-                    placeholder="Username"
+                    placeholder="add your username"
                     required
                 />
             </div>

@@ -22,9 +22,16 @@ const SingleItem = props=>{
           <br/>
           <h1>{item.itemName}</h1>
            <p className="lead"> {item.itemDescription} </p>
+          
            <p>
-             Owner <span className="badge"> {item.user} </span> Published on{''}
+             
+            
+             Item Price (JOD):<span className="badge"> {item.itemPrice}</span>
+             Owner <span className="badge"> {item.user} </span>
+             <br></br>
+             Published on{''}
              <span className="badge">{new Date(item.createdAt).toLocaleString()} </span>
+             
            </p>
         </div>
     );
