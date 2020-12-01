@@ -1,42 +1,42 @@
-const Post = require('../models/post');
-//require sulgify to slugify title .. Example My post ==> my-post
+const Item = require('../models/item');
+//require sulgify to slugify item name .. Example My item ==> my-item
 
 const slugify = require('slugify');
 
 exports.create = (req, res) => {
     // console.log(req.body);
-    const {title,content,user} = req.body
-    const slug = slugify(title);
+    const {itemName,itemDescription,user} = req.body
+    const slug = slugify(itemName);
 
     //validate
 
     switch(true){
-        case !title:
-            return res.status(400).json({error: 'Title is required'});
+        case !itemName:
+            return res.status(400).json({error: 'Item Name is required'});
             break;
-            case !content:
-                return res.status(400).json({error: 'Content is required'});
+            case !itemDescription:
+                return res.status(400).json({error: 'Item Description is required'});
                 break;           
     }
 
-    //create post
-    Post.create({title,content,user,slug}, (err,post)=>{
+    //create item
+    Item.create({itemName,itemDescription,user,slug}, (err,item)=>{
         if(err){
             console.log(err);
-            res.status(400).json({error: 'Duplicate post, Try another title !'});
+            res.status(400).json({error: 'Duplicate item, Try another Item Name !'});
 
         }
-        res.json(post);
+        res.json(item);
     });
 };
 
 exports.list = (req,res)=>{
-    Post.find({})
-    .limit(5)
+    Item.find({})
+    .limit(10)
     .sort({ createdAt:-1 })
-    .exec((err,posts)=>{
+    .exec((err,items)=>{
         if(err) console.log(err)
-        res.json(posts)
+        res.json(items)
     })
 }
 
@@ -46,10 +46,10 @@ exports.list = (req,res)=>{
  
 exports.read = (req,res)=>{
     const { slug } = req.params
-    Post.findOne({slug})
-    .exec((err,post)=>{
+    Item.findOne({slug})
+    .exec((err,item)=>{
         if(err) console.log(err);
-        res.json(post);
+        res.json(item);
     });
 };
 
@@ -58,11 +58,11 @@ and returns the found document (if any) to the callback.*/
 
 exports.update=(req,res)=>{
    const {slug} = req.params;
-   const{title,content,user} = req.body
+   const{itemName,itemDescription,user} = req.body
    // {new:true} returns the updatd input
-   Post.findOneAndUpdate({slug}, {title,content,user}, {new:true}).exec((err,post)=>{
+   Item.findOneAndUpdate({slug}, {itemName,itemDescription,user}, {new:true}).exec((err,item)=>{
        if(err) console.log(err)
-       res.json(post);
+       res.json(item);
    });
  
 };
@@ -72,10 +72,10 @@ exports.update=(req,res)=>{
 condition and then remove the first matched element*/
 exports.remove = (req,res)=>{
     const { slug } = req.params
-    Post.findOneAndRemove({slug}).exec((err,post)=>{
+    Item.findOneAndRemove({slug}).exec((err,item)=>{
         if(err) console.log(err);
         res.json({
-            message: 'Post deleted'
+            message: 'Item Rented'
         });
     });
 };

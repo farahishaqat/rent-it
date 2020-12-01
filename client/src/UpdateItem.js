@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from './Nav';
 
-const UpdatePost = (props) => {
+const UpdateItem = (props) => {
     const [state, setState] = useState({
-        title: '',
-        content: '',
+        itemName: '',
+        itemDescription: '',
         slug: '',
         user: ''
     });
-    const { title, content, slug, user } = state;
+    const { itemName, itemDescription, slug, user } = state;
 
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_API}/post/${props.match.params.slug}`)
+            .get(`${process.env.REACT_APP_API}/item/${props.match.params.slug}`)
             .then(response => {
-                const { title, content, slug, user } = response.data;
-                setState({ ...state, title, content, slug, user });
+                const { itemName, itemDescription, slug, user } = response.data;
+                setState({ ...state, itemName, itemDescription, slug, user });
             })
-            .catch(error => alert('Error loading single post'));
+            .catch(error => alert('Error loading item'));
              // eslint-disable-next-line
     },[]);
 
@@ -30,16 +30,16 @@ const UpdatePost = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // console.table({ title, content, user });
+        // console.table({ itemName, itemDescription, user });
         axios
-            .put(`${process.env.REACT_APP_API}/post/${slug}`, { title, content, user })
+            .put(`${process.env.REACT_APP_API}/item/${slug}`, { itemName, itemDescription, user })
             .then(response => {
                 console.log(response);
-                const { title, content, slug, user } = response.data;
+                const { itemName, itemDescription, slug, user } = response.data;
                 // empty state
-                setState({ ...state, title, content, slug, user });
+                setState({ ...state, itemName, itemDescription, slug, user });
                 // show sucess alert
-                alert(`Post titled ${title} is updated`);
+                alert(`Item Named ${itemName} is Edited`);
             })
             .catch(error => {
                 console.log(error.response);
@@ -50,24 +50,24 @@ const UpdatePost = (props) => {
     const showUpdateForm = () => (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label className="text-muted">Title</label>
+                <label className="text-muted"> Item Name </label>
                 <input
-                    onChange={handleChange('title')}
-                    value={title}
+                    onChange={handleChange('itemName')}
+                    value={itemName}
                     type="text"
                     className="form-control"
-                    placeholder="Post title"
+                    placeholder="Item Name"
                     required
                 />
             </div>
             <div className="form-group">
-                <label className="text-muted">Content</label>
+                <label className="text-muted">Item Description</label>
                 <textarea
-                    onChange={handleChange('content')}
-                    value={content}
+                    onChange={handleChange('itemDescription')}
+                    value={itemDescription}
                     type="text"
                     className="form-control"
-                    placeholder="Write something.."
+                    placeholder="Write something about the item you want to let .."
                     required
                 />
             </div>
@@ -78,12 +78,12 @@ const UpdatePost = (props) => {
                     value={user}
                     type="text"
                     className="form-control"
-                    placeholder="Your name"
+                    placeholder="Username"
                     required
                 />
             </div>
             <div>
-                <button className="btn btn-primary">Update</button>
+                <button className="btn btn-primary">Edit</button>
             </div>
         </form>
     );
@@ -92,10 +92,10 @@ const UpdatePost = (props) => {
         <div className="container pb-5">
             <Nav />
             <br />
-            <h1>UPDATE POST</h1>
+            <h1> EDIT ITEM </h1>
             {showUpdateForm()}
         </div>
     );
 };
 
-export default UpdatePost;
+export default UpdateItem;

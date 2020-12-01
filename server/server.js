@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const postRoutes = require('./routes/post')
+const itemRoutes = require('./routes/item')
 
 //app
 const app = express();
@@ -27,8 +27,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 //route middleware 
-app.use('/api',postRoutes)
-
+app.use('/api',itemRoutes)
 
 
 //port

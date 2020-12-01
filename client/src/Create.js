@@ -5,12 +5,12 @@ import Nav from './Nav'
 const Create = () => {
     // state
     const [state, setState] = useState({
-        title: '',
-        content: '',
+        itemName: '',
+        itemDescription: '',
         user: ''
     });
     // destructure values from state
-    const { title, content, user } = state;
+    const { itemName, itemDescription, user } = state;
 
     // onchange event handler
     function handleChange(name) {
@@ -21,15 +21,15 @@ const Create = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // console.table({ title, content, user });
+        // console.table({ itemName, ItemDescription, user });
         axios
-            .post(`${process.env.REACT_APP_API}/post`, { title, content, user })
+            .post(`${process.env.REACT_APP_API}/item`, { itemName, itemDescription, user })
             .then(response => {
                 console.log(response);
                 // empty state
-                setState({ ...state, title: '', content: '', user: '' });
+                setState({ ...state, itemName: '', itemDescription: '', user: '' });
                 // show sucess alert
-                alert(`Post titled ${response.data.title} is created`);
+                alert(`Item Name ${response.data.itemName} is Added`);
             })
             .catch(error => {
                 console.log(error.response);
@@ -40,29 +40,29 @@ const Create = () => {
     return (
         <div className="container pb-5">
             <Nav />
-            <h1>CREATE POST</h1>
+            <h1> ADD RENTALS </h1>
             <br />
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label className="text-muted">Title</label>
+                    <label className="text-muted">Item Name</label>
                     <input
-                        onChange={handleChange('title')}
-                        value={title}
+                        onChange={handleChange('itemName')}
+                        value={itemName}
                         type="text"
                         className="form-control"
-                        placeholder="Post title"
+                        placeholder="Item Name"
                         required
                     />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">Content</label>
+                    <label className="text-muted">Item Description </label>
                     <textarea
-                        onChange={handleChange('content')}
-                        value={content}
+                        onChange={handleChange('itemDescription')}
+                        value={itemDescription}
                         type="text"
                         className="form-control"
-                        placeholder="Write something.."
+                        placeholder="Write something about the item you want to let .."
                         required
                     />
                 </div>
@@ -73,12 +73,12 @@ const Create = () => {
                         value={user}
                         type="text"
                         className="form-control"
-                        placeholder="Your name"
+                        placeholder="Username"
                         required
                     />
                 </div>
                 <div>
-                    <button className="btn btn-primary">Create</button>
+                    <button className="btn btn-primary"> ADD </button>
                 </div>
             </form>
         </div>

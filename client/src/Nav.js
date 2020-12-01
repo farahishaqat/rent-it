@@ -5,11 +5,11 @@ const Nav =()=>(
     <nav>
         <ul className="nav nav-tabs">
             <li className="nav-item pr-3 pt-3 pb-3">
-                <Link to="/"> Home </Link>
+                <Link to="/"> HOME PAGE </Link>
             </li> 
             <li>
                 <li className="nav-item pr-3 pt-3 pb-3">
-                    <Link to="/create"> Create </Link>
+                    <Link to="/create"> ADD RENTALS </Link>
                 </li>
             </li>
         </ul>
