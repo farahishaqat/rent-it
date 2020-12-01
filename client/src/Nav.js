@@ -6,15 +6,15 @@ const Nav =()=>(
         <ul className="nav nav-tabs">
 
             <li className="nav-item pr-3 pt-3 pb-3">
-                <Link to="/"> HOME PAGE </Link>
+                <Link to="/"> Home </Link>
             </li> 
     
             <li className="nav-item pr-3 pt-3 pb-3">
-                    <Link to="/create"> ADD RENTALS </Link>
+                    <Link to="/create"> Add Rentals </Link>
             </li>
             
             <li className="nav-item pr-3 pt-3 pb-3">
-                    <Link to="/contact"> CONTACT US </Link>
+                    <Link to="/contact"> Contact Us </Link>
             </li>
         
         </ul>

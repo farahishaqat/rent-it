@@ -4,8 +4,6 @@ Gone are the days when you had to lock down your investment in furniture, applia
 ## Motivation
 Rent it lets you rent furniture, appliances & electronics on a monthly basis at affordable prices, eliminating the need for a huge budget to get things done!
 
-## Build status
-//tobe determined later
 
 ## Screenshots
 Include logo/demo screenshot etc.
@@ -17,7 +15,7 @@ Front End : react , react-router .( extra credit: redux) Design : Material UI, s
 • Wide range of products. • Best quality at the lowest price. • Free relocation when you move. • Free maintenance to stay stress-free. • Delivery & installation is on us. • All-day customer support.
 
 ## API Reference
-//tobedetermined
+
 
 ## How to use?
 Start renting, start saving.
