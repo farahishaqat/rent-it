@@ -3,6 +3,7 @@ import Nav from './Nav';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 const App = () => {
     const [items, setItems] = useState([]);
 
@@ -42,8 +43,8 @@ const App = () => {
         <div className="container pb-5">
             <Nav />
             <br />
-            <h4> Why Buy It? when you can</h4>
-            <h1> RENT IT </h1>
+            <h4  class="mx-auto" style={{width: "400px", color: "#111361" }}> Why Buy It? when you can RENT IT</h4> 
+           
             <hr />
             {items.map((item, i) => (
                 <div className="row" key={item._id} style={{ borderBottom: '1px solid silver' }}>
@@ -64,13 +65,15 @@ const App = () => {
                                 </p>
                             </div>
 
-                            <div className="col-md-2">
-                                <Link to={`/item/update/${item.slug}`} className="btn btn-sm btn-outline-warning">
+                            <div className="col-md-2 ">
+                                <Link to={`/item/update/${item.slug}`} className="btn btn-warning ">
                                     Edit
                                 </Link>
+
                                 <button
                                     onClick={() => deleteConfirm(item.slug)}
-                                    className="btn btn-sm btn-outline-danger ml-1"
+                                    className="btn btn-danger "
+                                    style={{marginLeft:"5px"}}
                                 >
                                     Rent it
                                 </button>
