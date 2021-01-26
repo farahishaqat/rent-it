@@ -20,15 +20,15 @@ Front End : react , react-router .( extra credit: redux) Design : Material UI, s
 ## How to use?
 Start renting, start saving.
 
-Sign-up providing email and password.
-In the home page pick the category you would like to review.
+Go to: https://rent-it-jo.herokuapp.com/
+Sign-up providing email and password. "Skip because its not implemented"
+In the home page you can review all available items (that you can rent).
 Pick up the product you need and suits your budget.
 Click on rent button.
-Provide rental duration.
-Approve.
-choose if you want it to be delivered/ if yes provide location.
-submit order.
-wait to receive a call from our customer support within 2 hours max.
+Wait to receive a call from our customer support within 2 hours max.
+You can add an item (offer to let it), edit item info and delete item.
+
+
 Credits
 Credits goes to Rbk team- and the awesome people who worked on this project Farah,Marwa,Jumana, Tahani.
 
